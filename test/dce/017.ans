@@ -1,0 +1,67 @@
+export function $main() {
+@l0
+	%n.1 =l alloc4 4
+	%t.2 =l alloc4 4
+	%c.3 =l alloc4 4
+	%p.4 =l alloc4 4
+	storew 0, %c.3
+	storew 2, %n.1
+@l1
+	%t5 =w load %n.1
+	%t4 =w csltw %t5, 5000
+	jnz %t4, @l2, @l3
+@l2
+	storew 2, %t.2
+	storew 1, %p.4
+@l4
+	%t13 =w load %t.2
+	%t14 =w load %t.2
+	%t12 =w mul %t13, %t14
+	%t15 =w load %n.1
+	%t11 =w cslew %t12, %t15
+	jnz %t11, @l5, @l6
+@l5
+	%t18 =w load %n.1
+	%t19 =w load %t.2
+	%t17 =w rem %t18, %t19
+	%t16 =w ceqw %t17, 0
+	jnz %t16, @l7, @l8
+@l7
+	storew 0, %p.4
+@l8
+	%t24 =w load %t.2
+	%t23 =w add %t24, 1
+	storew %t23, %t.2
+	jmp @l4
+@l6
+	%t25 =w load %p.4
+	jnz %t25, @l10, @l11
+@l10
+	%t26 =w load %c.3
+	jnz %t26, @l16, @l14
+@l16
+	%t29 =w load %c.3
+	%t28 =w rem %t29, 10
+	%t27 =w ceqw %t28, 0
+	jnz %t27, @l13, @l14
+@l13
+	argl $glo1
+	%t32 =w vacall $printf
+@l14
+	%t36 =w load %n.1
+	argl $glo2
+	argw %t36
+	%t34 =w vacall $printf
+	%t38 =w load %c.3
+	%t37 =w add %t38, 1
+	storew %t37, %c.3
+@l11
+	%t40 =w load %n.1
+	%t39 =w add %t40, 1
+	storew %t39, %n.1
+	jmp @l1
+@l3
+	argl $glo3
+	%t41 =w vacall $printf
+	retw 0
+}

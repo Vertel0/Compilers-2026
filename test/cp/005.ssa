@@ -1,0 +1,9 @@
+export function w $foo() {
+@start
+	%u =w copy 1
+	%x =w copy %u
+	%y =w copy %x
+	%x =w copy 24
+@end
+	ret %x
+}

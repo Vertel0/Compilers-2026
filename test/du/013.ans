@@ -1,0 +1,24 @@
+@l0
+	def = %t2 %t3 %b %y %x %t1 %t0
+	use =
+
+@l6
+	def = %t5 %t7
+	use = %x
+
+@l5
+	def = %t8 %t9
+	use = %y
+
+@l4
+	def = %t11 %t13
+	use = %y
+
+@l1
+	def =
+	use =
+
+@l2
+	def = %t15 %t16 %t17 %t26 %t25 %t24 %t18 %t19 %t23 %t22 %t21 %t20
+	use = %y %x %b
+

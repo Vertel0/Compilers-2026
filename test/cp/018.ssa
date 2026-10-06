@@ -1,0 +1,8 @@
+export function w $f() {
+@start
+    %a =w copy 42
+    %b =w copy %a
+    %b =w copy %b
+@end
+    ret %b
+}

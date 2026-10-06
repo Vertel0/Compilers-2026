@@ -1,0 +1,18 @@
+@start
+	gen = @start%a @start%b @start%cmp1 @start%m @start%n 
+	kill = @nn%n @np_mn%a @positive%a 
+@np
+	gen = @np%cmp2 
+	kill = 
+@positive
+	gen = @positive%a 
+	kill = @np_mn%a @start%a 
+@np_mn
+	gen = @np_mn%a 
+	kill = @positive%a @start%a 
+@nn
+	gen = @nn%n 
+	kill = @start%n 
+@ret
+	gen = 
+	kill = 

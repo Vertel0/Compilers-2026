@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      assignment:
+        description: Assignment to test
+        type: choice
+        required: true
+        default: all
+        options: [all, du, gk, lv, rd, cp, dce]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: [self-hosted, Linux, X64, qbe]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add runner tools to PATH
+        run: |
+          echo /opt/github-runners/cmake-4.3.0-rc1-linux-x86_64/bin >> "$GITHUB_PATH"
+          echo /opt/github-runners/LLVM-22.1.0/bin >> "$GITHUB_PATH"
+          echo /opt/github-runners/qbe-venv/bin >> "$GITHUB_PATH"
+          echo /opt/github-runners >> "$GITHUB_PATH"
+          echo /opt/github-runners/ninja/bin >> "$GITHUB_PATH"
+      - name: Configure
+        run: |
+          rm -rf build test/private
+          cmake --preset ci-server
+      - name: Build all assignments
+        run: cmake --build --preset ci-server
+      - name: Package binaries
+        run: tar -C build -czf qbe-tools.tar.gz du gk lv rd cp dce
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qbe-tools
+          path: qbe-tools.tar.gz
+          if-no-files-found: error
+          retention-days: 1
+
+  test:
+    name: Test ${{ matrix.assignment }}
+    needs: build
+    runs-on: [self-hosted, Linux, X64, qbe]
+    strategy:
+      fail-fast: false
+      matrix:
+        assignment: ${{ fromJSON(github.event_name == 'workflow_dispatch' && inputs.assignment != 'all' && format('["{0}"]', inputs.assignment) || '["du","gk","lv","rd","cp","dce"]') }}
+    env:
+      TASK: ${{ matrix.assignment }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add runner tools to PATH
+        run: |
+          echo /opt/github-runners/cmake-4.3.0-rc1-linux-x86_64/bin >> "$GITHUB_PATH"
+          echo /opt/github-runners/LLVM-22.1.0/bin >> "$GITHUB_PATH"
+          echo /opt/github-runners/qbe-venv/bin >> "$GITHUB_PATH"
+          echo /opt/github-runners >> "$GITHUB_PATH"
+          echo /opt/github-runners/ninja/bin >> "$GITHUB_PATH"
+      - name: Prepare private tests
+        run: |
+          private_suite="/opt/github-runners/qbe-private-test/$TASK-tests"
+          test -d "$private_suite"
+          rm -rf build test/private
+          mkdir -p test/private
+          ln -s "$private_suite" "test/private/$TASK"
+      - name: Configure CMake tests
+        run: cmake --preset ci-server
+      - uses: actions/download-artifact@v4
+        with:
+          name: qbe-tools
+      - name: Restore binaries
+        run: tar -C build -xzf qbe-tools.tar.gz
+      - name: Run public and private suites
+        run: |
+          set +e
+          ctest --preset "$TASK-public-suite" --output-on-failure
+          public_status=$?
+          ctest --preset "$TASK-private-suite" --output-on-failure
+          private_status=$?
+          if (( public_status != 0 || private_status != 0 )); then
+            exit 1
+          fi

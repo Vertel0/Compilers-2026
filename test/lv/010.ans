@@ -1,0 +1,42 @@
+@l0
+	lv_out = %nv %c %n %cmax %mem
+
+@l1
+	lv_out = %c %n %nv %cmax %mem
+
+@l2
+	lv_out = %n %nv %c %cmax %mem
+
+@l4
+	lv_out = %nv %n %c %cmax %mem
+
+@l5
+	lv_out = %c %n %mem %cmax %nv
+
+@l7
+	lv_out = %c %cmax %nv %mem %n
+
+@l8
+	lv_out = %n %c %nv %cmax %mem
+
+@l10
+	lv_out = %n %c %nv %cmax %mem
+
+@l11
+	lv_out = %n %c %nv %cmax %mem
+
+@l12
+	lv_out = %n %nv %c %cmax %mem
+
+@l6
+	lv_out = %cmax %c %nv %n %mem
+
+@l13
+	lv_out = %nv %c %n %cmax %mem
+
+@l14
+	lv_out = %nv %c %n %cmax %mem
+
+@l3
+	lv_out =
+

@@ -1,0 +1,10 @@
+function $test() {
+@start
+	%x.3 =w copy 0
+	jnz 1, @left, @end
+@left
+	%x.5 =w copy 3
+@end
+	%x.4 =w phi @start %x.3
+	retw %x.4
+}

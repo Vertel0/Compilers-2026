@@ -1,0 +1,30 @@
+export function $f() {
+@start
+	%a =w copy 42
+	%b =w copy %a
+	%c =w copy %a
+	%d =w copy %a
+	%e =w copy %a
+	%f =w copy %a
+	%g =w copy %a
+	%h =w copy %a
+	%i =w copy %a
+	%j =w copy %a
+	%k =w copy %a
+	%l =w copy %a
+	%m =w copy %a
+	%n =w copy %a
+	%o =w copy %a
+	%p =w copy %a
+	%q =w copy %a
+	%r =w copy %a
+	%s =w copy %a
+	%t =w copy %a
+	%u =w copy %a
+	%v =w copy %a
+	%w =w copy %a
+	%x =w copy %a
+	%y =w copy %a
+	%z =w copy %a
+	retw %a
+}

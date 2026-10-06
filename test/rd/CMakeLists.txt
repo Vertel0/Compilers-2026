@@ -1,0 +1,1 @@
+qbe_add_test(rd)

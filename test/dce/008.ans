@@ -1,0 +1,6 @@
+function $unused_param() {
+@start
+	%p =w par
+	nop
+	retw %p
+}

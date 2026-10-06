@@ -1,0 +1,9 @@
+export function $main() {
+@start
+	%a =w copy 34
+	%x =w copy %a
+	argw %a
+	argw %a
+	%r =w call $add
+	retw 0
+}

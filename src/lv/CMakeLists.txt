@@ -1,0 +1,1 @@
+qbe_add_tool(lv main.cpp)

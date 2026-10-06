@@ -1,0 +1,10 @@
+function $test() {
+@start
+	nop
+	%dum.2 =w copy 0
+@loop
+	nop
+@end
+	nop
+	retw %dum.2
+}

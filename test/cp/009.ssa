@@ -1,0 +1,7 @@
+export function w $main() {
+@start
+    %a =w copy 34
+    %x =w copy %a
+	%r =w call $add(w %x, w %x)
+	ret 0
+}

@@ -1,0 +1,31 @@
+export function $foo() {
+@start
+	%a =w copy 1
+	%b =w copy 1
+@b1
+	%c =w add %a, %b
+	%d =w copy %c
+	%e =w mul %c, %c
+@b2
+	%f =w add %a, %c
+	%g =w copy %e
+	%a =w add %e, %c
+	%condition =w csltw %a, %c
+	jnz %condition, @b3, @b4
+@b3
+	%h =w add %e, 1
+	jmp @b5
+@b4
+	%f =w sub %c, %e
+	%condition2 =w csgtw %f, %a
+	jnz %condition2, @b5, @b6
+@b5
+	%p =w mul %c, %e
+	%b =w mul %e, %a
+	%condition3 =w csgtw %f, %h
+	jnz %condition3, @b2, @end
+@b6
+	%c =w copy 2
+@end
+	retw %a
+}

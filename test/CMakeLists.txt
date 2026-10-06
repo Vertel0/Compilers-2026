@@ -1,0 +1,6 @@
+add_subdirectory(cp)
+add_subdirectory(dce)
+add_subdirectory(du)
+add_subdirectory(gk)
+add_subdirectory(lv)
+add_subdirectory(rd)

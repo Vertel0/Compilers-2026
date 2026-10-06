@@ -1,0 +1,18 @@
+@l0
+	lv_out = %n %zy %zx %y %x %rnd %col %ny %nx %fy %fx
+
+@l1
+	lv_out = %zy %zx %y %x %rnd %n %col %ny %nx %fy %fx
+
+@l2
+	lv_out = %n %zy %ny %zx %nx %fy %fx %y %x %rnd %col
+
+@l4
+	lv_out = %y %x %rnd %n %col
+
+@l5
+	lv_out = %n %zy %zx %y %x %rnd %col %ny %nx %fy %fx
+
+@l3
+	lv_out =
+

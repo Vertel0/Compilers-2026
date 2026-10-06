@@ -1,0 +1,13 @@
+export function $f() {
+@b1
+    %a =w copy 34
+    %b =w copy %a
+    %c =w mul 4, %b
+    %cond1 =w csgtw %c, %b
+    jnz %cond1, @b3, @b2
+@b2
+    %d =w add %b, 2
+@b3
+    %e =w add %a, %b
+    ret
+}

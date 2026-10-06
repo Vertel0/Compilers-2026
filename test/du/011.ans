@@ -1,0 +1,60 @@
+@l0
+	def = %d %c %b %a %i
+	use =
+
+@l1
+	def = %t2 %t3
+	use = %a
+
+@l2
+	def = %t6 %t7
+	use = %b %a
+
+@l4
+	def = %t9 %t10
+	use = %b
+
+@l5
+	def = %t13 %t17 %t19 %t18 %t14 %t16 %t15
+	use = %i %d %b %a
+
+@l7
+	def = %t22 %t23
+	use = %i
+
+@l8
+	def = %t25 %t29 %t26 %t28 %t27
+	use = %d %i
+
+@l10
+	def = %t32 %t34 %t33 %t31
+	use = %c %b %i
+
+@l16
+	def = %t35 %t36 %t40 %t37 %t39 %t38
+	use = %c %b %a
+
+@l13
+	def = %t42 %t44 %t48 %t45 %t47 %t46
+	use = %c %b %a
+
+@l14
+	def =
+	use =
+
+@l11
+	def = %t50 %t51
+	use = %i
+
+@l9
+	def = %t52 %t53
+	use = %b
+
+@l6
+	def = %t54 %t55
+	use = %a
+
+@l3
+	def =
+	use =
+

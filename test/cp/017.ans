@@ -1,0 +1,18 @@
+export function $foo() {
+@start
+	%a =w copy 34
+	%b =w copy 42
+	%x =w copy %a
+	%y =w copy %b
+@end
+	%d =w or %a, %b
+	%e =w or %b, %a
+	%f =w and %a, %b
+	%g =w and %b, %a
+	%h =w xor %a, %b
+	%i =w xor %b, %a
+	%j =w sar %a, 1
+	%k =w shr %a, 1
+	%l =w shl %a, 1
+	ret0
+}

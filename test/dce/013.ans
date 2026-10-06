@@ -1,0 +1,53 @@
+export function $sieve() {
+@fill0.cond
+	%n.12 =w par
+	%prime.13 =l par
+	%cond.1 =w csgtw %n.12, 0
+	jnz %cond.1, @fill0.body, @fill0.exit
+@fill0.body
+	storeb 0, %prime.13
+@fill0.exit
+	%cond.2 =w csgtw %n.12, 1
+	jnz %cond.2, @fill1.body, @fill1.exit
+@fill1.body
+	%addr.6 =l add %prime.13, 1
+	storeb 0, %addr.6
+@fill1.exit
+	%i.14 =w cast 2
+@fill2.header
+	%i.15 =w phi @fill1.exit %i.14, @fill2.body %i.22
+	%cond.3 =w csltw %i.15, %n.12
+	jnz %cond.3, @fill2.body, @fill2.exit
+@fill2.body
+	%i1.10 =l extsw %i.15
+	%addr.7 =l add %prime.13, %i1.10
+	storeb 1, %addr.7
+	%i.22 =w add %i.15, 1
+	jmp @fill2.header
+@fill2.exit
+	%i.16 =w cast 1
+@outer.header
+	%i.17 =w phi @fill2.exit %i.16, @outer.cond %i.18, @inner.header %i.18
+	%i.18 =w add %i.17, 1
+	%cond.4 =w csltw %i.18, %n.12
+	jnz %cond.4, @outer.cond, @outer.exit
+@outer.cond
+	%i1.11 =l extsw %i.18
+	%addr.8 =l add %prime.13, %i1.11
+	%value =w loadsb %addr.8
+	jnz %value, @inner.preheader, @outer.header
+@inner.preheader
+	%j.19 =w mul %i.18, %i.18
+@inner.header
+	%j.20 =w phi @inner.preheader %j.19, @inner.body %j.21
+	%cond.5 =w csltw %j.20, %n.12
+	jnz %cond.5, @inner.body, @outer.header
+@inner.body
+	%j1 =l extsw %j.20
+	%addr.9 =l add %prime.13, %j1
+	storeb 0, %addr.9
+	%j.21 =w add %j.20, %i.18
+	jmp @inner.header
+@outer.exit
+	ret0
+}

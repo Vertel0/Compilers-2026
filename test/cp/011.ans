@@ -1,0 +1,11 @@
+export function $f() {
+@start
+	%x =w copy 10
+	%y =w copy %x
+	%cond =w csltw %x, %x
+	jnz %cond, @true, @end
+@true
+	%x =w copy 11
+@end
+	retw %y
+}

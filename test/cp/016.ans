@@ -1,0 +1,23 @@
+export function $foo() {
+@start
+	%a =w copy 34
+	%b =w copy 42
+	%x =w copy %a
+	%y =w copy %b
+@end
+	%d =w add %a, %b
+	%e =w add %b, %a
+	%f =w sub %a, %b
+	%g =w sub %b, %a
+	%h =w div %a, %b
+	%i =w div %b, %a
+	%j =w mul %a, %b
+	%k =w mul %b, %a
+	%l =w rem %a, %b
+	%m =w rem %b, %a
+	%n =w udiv %a, %b
+	%m =w udiv %b, %a
+	%o =w urem %a, %b
+	%p =w urem %b, %a
+	ret0
+}

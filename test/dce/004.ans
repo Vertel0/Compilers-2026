@@ -1,0 +1,7 @@
+function $baz() {
+@start
+	%p =l par
+	nop
+	nop
+	retw %p
+}

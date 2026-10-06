@@ -1,0 +1,184 @@
+export function $chk() {
+@l0
+	%t0 =w par
+	%t1 =w par
+	%t2 =l par
+	%t3 =w par
+	%x.1 =l alloc4 4
+	storew %t0, %x.1
+	%y.2 =l alloc4 4
+	storew %t1, %y.2
+	%t.3 =l alloc8 8
+	storel %t2, %t.3
+	%Q.4 =l alloc4 4
+	storew %t3, %Q.4
+	%i.5 =l alloc4 4
+	%r.6 =l alloc4 4
+	storew 0, %i.5
+	storew 0, %r.6
+@l1
+	%t8 =w load %i.5
+	%t9 =w load %Q.4
+	%t7 =w csltw %t8, %t9
+	jnz %t7, @l2, @l3
+@l2
+	%t12 =w load %r.6
+	%t17 =l load %t.3
+	%t18 =w load %x.1
+	%t19 =l extsw %t18
+	%t20 =l mul 8, %t19
+	%t16 =l add %t17, %t20
+	%t15 =l load %t16
+	%t21 =w load %i.5
+	%t22 =l extsw %t21
+	%t23 =l mul 4, %t22
+	%t14 =l add %t15, %t23
+	%t13 =w load %t14
+	%t11 =w add %t12, %t13
+	storew %t11, %r.6
+	%t26 =w load %r.6
+	%t31 =l load %t.3
+	%t32 =w load %i.5
+	%t33 =l extsw %t32
+	%t34 =l mul 8, %t33
+	%t30 =l add %t31, %t34
+	%t29 =l load %t30
+	%t35 =w load %y.2
+	%t36 =l extsw %t35
+	%t37 =l mul 4, %t36
+	%t28 =l add %t29, %t37
+	%t27 =w load %t28
+	%t25 =w add %t26, %t27
+	storew %t25, %r.6
+	%t41 =w load %x.1
+	%t42 =w load %i.5
+	%t40 =w add %t41, %t42
+	%t43 =w load %Q.4
+	%t39 =w csltw %t40, %t43
+	%t46 =w load %y.2
+	%t47 =w load %i.5
+	%t45 =w add %t46, %t47
+	%t48 =w load %Q.4
+	%t44 =w csltw %t45, %t48
+	%t38 =w and %t39, %t44
+	jnz %t38, @l4, @l5
+@l4
+	%t51 =w load %r.6
+	%t56 =l load %t.3
+	%t58 =w load %x.1
+	%t59 =w load %i.5
+	%t57 =w add %t58, %t59
+	%t60 =l extsw %t57
+	%t61 =l mul 8, %t60
+	%t55 =l add %t56, %t61
+	%t54 =l load %t55
+	%t63 =w load %y.2
+	%t64 =w load %i.5
+	%t62 =w add %t63, %t64
+	%t65 =l extsw %t62
+	%t66 =l mul 4, %t65
+	%t53 =l add %t54, %t66
+	%t52 =w load %t53
+	%t50 =w add %t51, %t52
+	storew %t50, %r.6
+@l5
+	%t70 =w load %x.1
+	%t71 =w load %i.5
+	%t69 =w add %t70, %t71
+	%t72 =w load %Q.4
+	%t68 =w csltw %t69, %t72
+	%t76 =w load %y.2
+	%t77 =w load %i.5
+	%t75 =w sub %t76, %t77
+	%t73 =w cslew 0, %t75
+	%t67 =w and %t68, %t73
+	jnz %t67, @l7, @l8
+@l7
+	%t80 =w load %r.6
+	%t85 =l load %t.3
+	%t87 =w load %x.1
+	%t88 =w load %i.5
+	%t86 =w add %t87, %t88
+	%t89 =l extsw %t86
+	%t90 =l mul 8, %t89
+	%t84 =l add %t85, %t90
+	%t83 =l load %t84
+	%t92 =w load %y.2
+	%t93 =w load %i.5
+	%t91 =w sub %t92, %t93
+	%t94 =l extsw %t91
+	%t95 =l mul 4, %t94
+	%t82 =l add %t83, %t95
+	%t81 =w load %t82
+	%t79 =w add %t80, %t81
+	storew %t79, %r.6
+@l8
+	%t100 =w load %x.1
+	%t101 =w load %i.5
+	%t99 =w sub %t100, %t101
+	%t97 =w cslew 0, %t99
+	%t104 =w load %y.2
+	%t105 =w load %i.5
+	%t103 =w add %t104, %t105
+	%t106 =w load %Q.4
+	%t102 =w csltw %t103, %t106
+	%t96 =w and %t97, %t102
+	jnz %t96, @l10, @l11
+@l10
+	%t109 =w load %r.6
+	%t114 =l load %t.3
+	%t116 =w load %x.1
+	%t117 =w load %i.5
+	%t115 =w sub %t116, %t117
+	%t118 =l extsw %t115
+	%t119 =l mul 8, %t118
+	%t113 =l add %t114, %t119
+	%t112 =l load %t113
+	%t121 =w load %y.2
+	%t122 =w load %i.5
+	%t120 =w add %t121, %t122
+	%t123 =l extsw %t120
+	%t124 =l mul 4, %t123
+	%t111 =l add %t112, %t124
+	%t110 =w load %t111
+	%t108 =w add %t109, %t110
+	storew %t108, %r.6
+@l11
+	%t129 =w load %x.1
+	%t130 =w load %i.5
+	%t128 =w sub %t129, %t130
+	%t126 =w cslew 0, %t128
+	%t134 =w load %y.2
+	%t135 =w load %i.5
+	%t133 =w sub %t134, %t135
+	%t131 =w cslew 0, %t133
+	%t125 =w and %t126, %t131
+	jnz %t125, @l13, @l14
+@l13
+	%t138 =w load %r.6
+	%t143 =l load %t.3
+	%t145 =w load %x.1
+	%t146 =w load %i.5
+	%t144 =w sub %t145, %t146
+	%t147 =l extsw %t144
+	%t148 =l mul 8, %t147
+	%t142 =l add %t143, %t148
+	%t141 =l load %t142
+	%t150 =w load %y.2
+	%t151 =w load %i.5
+	%t149 =w sub %t150, %t151
+	%t152 =l extsw %t149
+	%t153 =l mul 4, %t152
+	%t140 =l add %t141, %t153
+	%t139 =w load %t140
+	%t137 =w add %t138, %t139
+	storew %t137, %r.6
+@l14
+	%t155 =w load %i.5
+	%t154 =w add %t155, 1
+	storew %t154, %i.5
+	jmp @l1
+@l3
+	%t156 =w load %r.6
+	retw %t156
+}

@@ -1,0 +1,51 @@
+@l0
+	lv_out = %n %c %col %x %rnd %W %y %H %e %win %ie
+
+@l1
+	lv_out = %n %c %col %x %rnd %W %y %H %e %win %ie
+
+@l2
+	lv_out = %n %c %col %x %rnd %W %y %H %e %win %ie
+
+@l3
+	lv_out = %W %x %y %rnd %H %e %win %ie
+
+@l4
+	lv_out = %y %rnd %H %x %W %e %win %ie
+
+@l5
+	lv_out = %H %y %x %W %rnd %e %win %ie
+
+@l7
+	lv_out = %H %y %x %W %rnd %e %win %ie
+
+@l8
+	lv_out = %H %y %x %W %rnd %e %win %ie
+
+@l9
+	lv_out = %W %x %y %rnd %H %e %win %ie
+
+@l6
+	lv_out = %e %win %rnd %ie
+
+@l10
+	lv_out = %e %win %rnd %ie
+
+@l11
+	lv_out = %ie %e %win %rnd
+
+@l13
+	lv_out = %win %rnd %e %ie
+
+@l16
+	lv_out = %win %rnd
+
+@l17
+	lv_out = %e %win %rnd %ie
+
+@l14
+	lv_out = %e %win %rnd %ie
+
+@l12
+	lv_out =
+

@@ -1,0 +1,60 @@
+export function $print() {
+@l0
+	%t0 =w par
+	%t1 =l par
+	%Q.1 =l alloc4 4
+	storew %t0, %Q.1
+	%t.2 =l alloc8 8
+	storel %t1, %t.2
+	%x.3 =l alloc4 4
+	%y.4 =l alloc4 4
+	storew 0, %y.4
+@l1
+	%t5 =w load %y.4
+	%t6 =w load %Q.1
+	%t4 =w csltw %t5, %t6
+	jnz %t4, @l2, @l3
+@l2
+	storew 0, %x.3
+@l4
+	%t10 =w load %x.3
+	%t11 =w load %Q.1
+	%t9 =w csltw %t10, %t11
+	jnz %t9, @l5, @l6
+@l5
+	%t16 =l load %t.2
+	%t17 =w load %x.3
+	%t18 =l extsw %t17
+	%t19 =l mul 8, %t18
+	%t15 =l add %t16, %t19
+	%t14 =l load %t15
+	%t20 =w load %y.4
+	%t21 =l extsw %t20
+	%t22 =l mul 4, %t21
+	%t13 =l add %t14, %t22
+	%t12 =w load %t13
+	jnz %t12, @l7, @l8
+@l7
+	argl $glo1
+	%t23 =w vacall $printf
+	jmp @l9
+@l8
+	argl $glo2
+	%t25 =w vacall $printf
+@l9
+	%t28 =w load %x.3
+	%t27 =w add %t28, 1
+	storew %t27, %x.3
+	jmp @l4
+@l6
+	argl $glo3
+	%t29 =w vacall $printf
+	%t32 =w load %y.4
+	%t31 =w add %t32, 1
+	storew %t31, %y.4
+	jmp @l1
+@l3
+	argl $glo4
+	%t33 =w vacall $printf
+	retw 0
+}

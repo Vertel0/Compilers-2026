@@ -1,0 +1,245 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21
+  },
+  "configurePresets": [
+    {
+      "name": "clang-compiler",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "enable-libcxx",
+      "hidden": true,
+      "cacheVariables": {
+        "QBE_ENABLE_LIBCXX": "On"
+      }
+    },
+    {
+      "name": "gcc-compiler",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    },
+    {
+      "name": "basic-cfg",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "environment": {
+        "QBE_ROOT_DIR": "/opt/github-runners/qbe"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "QBE_ROOT_DIR": "$env{QBE_ROOT_DIR}"
+      }
+    },
+    {
+      "name": "ci-server",
+      "displayName": "ci-server configuration",
+      "inherits": [
+        "clang-compiler",
+        "basic-cfg"
+      ],
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "debug configuration",
+      "inherits": "basic-cfg",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "release configuration",
+      "inherits": "basic-cfg",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "relwithdebinfo",
+      "displayName": "relWithDebInfo configuration",
+      "inherits": "basic-cfg",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "ci-server",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "configurePreset": "release"
+    },
+    {
+      "name": "relwithdebinfo",
+      "configurePreset": "relwithdebinfo"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "common",
+      "hidden": true,
+      "configurePreset": "ci-server",
+      "execution": {
+        "noTestsAction": "error",
+        "timeout": 5
+      },
+      "output": {
+        "verbosity": "verbose",
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "cp-public-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^cp-public-suite"
+        }
+      }
+    },
+    {
+      "name": "dce-public-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^dce-public-suite"
+        }
+      }
+    },
+    {
+      "name": "du-public-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^du-public-suite"
+        }
+      }
+    },
+    {
+      "name": "gk-public-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^gk-public-suite"
+        }
+      }
+    },
+    {
+      "name": "lv-public-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^lv-public-suite"
+        }
+      }
+    },
+    {
+      "name": "rd-public-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^rd-public-suite"
+        }
+      }
+    },
+    {
+      "name": "cp-private-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^cp-private-suite"
+        }
+      }
+    },
+    {
+      "name": "dce-private-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^dce-private-suite"
+        }
+      }
+    },
+    {
+      "name": "du-private-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^du-private-suite"
+        }
+      }
+    },
+    {
+      "name": "gk-private-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^gk-private-suite"
+        }
+      }
+    },
+    {
+      "name": "lv-private-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^lv-private-suite"
+        }
+      }
+    },
+    {
+      "name": "rd-private-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "^rd-private-suite"
+        }
+      }
+    },
+    {
+      "name": "public-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "public-suite"
+        }
+      }
+    },
+    {
+      "name": "private-suite",
+      "inherits": "common",
+      "filter": {
+        "include": {
+          "name": "private-suite"
+        }
+      }
+    },
+    {
+      "name": "all-tests",
+      "inherits": "common"
+    }
+  ]
+}
